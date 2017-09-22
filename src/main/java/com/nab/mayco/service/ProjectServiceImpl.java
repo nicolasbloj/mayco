@@ -9,16 +9,23 @@ import org.springframework.stereotype.Service;
 import com.nab.mayco.model.Project;
 import com.nab.mayco.repository.ProjectRepository;
 
+// @Transactional
+
 @Service("ProjectService")
 public class ProjectServiceImpl implements ProjectService {
 
   @Autowired
-  @Qualifier("ProjectRepositoryStub")
+  @Qualifier("ProjectRepositoryHbn")
   private ProjectRepository projectReposityory;
 
   @Override
   public List<Project> list() {
-    return projectReposityory.list();
+    return this.projectReposityory.list();
+  }
+
+  @Override
+  public void add(Project project) {
+    this.projectReposityory.add(project);
   }
 
 }

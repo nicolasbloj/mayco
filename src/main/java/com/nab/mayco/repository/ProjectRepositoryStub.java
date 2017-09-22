@@ -21,4 +21,10 @@ public class ProjectRepositoryStub implements ProjectRepository {
     return projects;
   }
 
+  @Override
+  public void add(Project project) {
+    // TODO Auto-generated method stub
+
+  }
+
 }
