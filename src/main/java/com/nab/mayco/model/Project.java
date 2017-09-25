@@ -23,7 +23,8 @@ public class Project implements Serializable {
   @Column(name = "name")
   private String name;
 
-  // Byte [] img
+  @Column(name = "image")
+  private byte[] image;
 
   public Project() {}
 
@@ -36,6 +37,12 @@ public class Project implements Serializable {
     this.name = name;
   }
 
+  public Project(String name, byte[] image) {
+    this.name = name;
+    this.image = image;
+  }
+
+
   public Integer getId() {
     return id;
   }
@@ -44,6 +51,9 @@ public class Project implements Serializable {
     return name;
   }
 
+  public byte[] getImage() {
+    return image;
+  }
 
 
 }
