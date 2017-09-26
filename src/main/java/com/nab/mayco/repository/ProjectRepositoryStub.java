@@ -27,4 +27,10 @@ public class ProjectRepositoryStub implements ProjectRepository {
 
   }
 
+  @Override
+  public Project delete(Project project) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
 }

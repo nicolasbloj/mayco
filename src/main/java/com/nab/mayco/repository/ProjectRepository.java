@@ -6,7 +6,9 @@ import com.nab.mayco.model.Project;
 
 public interface ProjectRepository {
 
-  public void add(Project project);
+  public Project delete(Project project);
+
+  public void add(Project project); // Este metodo deberia devolver id
 
   public List<Project> list();
 

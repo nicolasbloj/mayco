@@ -6,7 +6,9 @@ import com.nab.mayco.dto.ProjectDTO;
 
 public interface ProjectService {
 
-  public void add(ProjectDTO projectDTO);
+  public Integer delete(ProjectDTO projectDTO);
+
+  public void add(ProjectDTO projectDTO); // Deberiamos devolver id
 
   public List<ProjectDTO> list();
 

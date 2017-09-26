@@ -37,4 +37,17 @@ public class ProjectServiceImpl implements ProjectService {
     this.projectReposityory.add(ProjectConverter.convertFromDTO(projectDTO));
   }
 
+
+  @Override
+  public Integer delete(ProjectDTO projectDTO) {
+    try {
+      Project projectDel = projectReposityory.delete(ProjectConverter.convertFromDTO(projectDTO));
+      return projectDel.getId();
+    } catch (Exception e) {
+      e.printStackTrace();
+      return -1;
+    }
+
+
+  }
 }

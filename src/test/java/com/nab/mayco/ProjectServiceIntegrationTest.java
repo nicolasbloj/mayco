@@ -1,13 +1,8 @@
 package com.nab.mayco;
 
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = {MaycoApplication.class},
-    webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+// @RunWith(SpringRunner.class)
+// @SpringBootTest(classes = {MaycoApplication.class},
+// webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 
 public class ProjectServiceIntegrationTest {
 
