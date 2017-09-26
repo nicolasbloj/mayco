@@ -29,4 +29,11 @@ public class ProjectRepositoryHbn implements ProjectRepository {
     entityManager.persist(project);
   }
 
+
+  public Project delete(Project project) {
+    entityManager.remove(project);
+    entityManager.flush();
+    return project;
+  }
+
 }

@@ -16,6 +16,11 @@ public class ProjectDTO implements Serializable {
 
   public ProjectDTO() {}
 
+  // for delete
+  public ProjectDTO(Integer id) {
+    this.id = id;
+  }
+
   public ProjectDTO(Integer id, String name) {
     this.name = name;
     this.id = id;
