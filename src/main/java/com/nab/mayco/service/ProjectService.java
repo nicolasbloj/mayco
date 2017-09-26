@@ -2,13 +2,12 @@ package com.nab.mayco.service;
 
 import java.util.List;
 
-import com.nab.mayco.model.Project;
-
+import com.nab.mayco.dto.ProjectDTO;
 
 public interface ProjectService {
 
-  public void add(Project project);
+  public void add(ProjectDTO projectDTO);
 
-  public List<Project> list();
+  public List<ProjectDTO> list();
 
 }

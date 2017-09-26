@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nab.mayco.model.Project;
+import com.nab.mayco.dto.ProjectDTO;
 import com.nab.mayco.service.ProjectService;
 
 @RestController
@@ -27,16 +27,16 @@ public class ProjectController {
 
   @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<List<Project>> list() {
-    List<Project> projects = service.list();
-    return new ResponseEntity<List<Project>>(projects, HttpStatus.OK);
+  public ResponseEntity<List<ProjectDTO>> list() {
+    List<ProjectDTO> projects = service.list();
+    return new ResponseEntity<List<ProjectDTO>>(projects, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json",
       produces = "application/json")
   public ResponseEntity<String> add(
-      @RequestBody Project project/* , UriComponentsBuilder builder */) {
-    service.add(project); // control flag si existe ya, HttpStatus.CONFLICT
+      @RequestBody ProjectDTO projectDTO/* , UriComponentsBuilder builder */) {
+    service.add(projectDTO); // control flag si existe ya, HttpStatus.CONFLICT
     // headers.setLocation(builder.path("/project/{id}").buildAndExpand(article.getProjectId()).toUri());
     return new ResponseEntity<String>("Proyecto cargado correctamente", HttpStatus.CREATED);
   }
