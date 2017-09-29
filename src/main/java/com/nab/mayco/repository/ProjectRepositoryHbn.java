@@ -31,7 +31,8 @@ public class ProjectRepositoryHbn implements ProjectRepository {
 
 
   public Project delete(Project project) {
-    entityManager.remove(project);
+    entityManager.remove(entityManager.contains(project) ? project : entityManager.merge(project));
+    // entityManager.remove(project);
     entityManager.flush();
     return project;
   }

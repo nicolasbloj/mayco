@@ -32,7 +32,11 @@ public class ProjectConverter {
     if (projectDTO.getImageEncoded() != null) {
       decoded = Base64.getDecoder().decode(projectDTO.getImageEncoded().getBytes());
       logger.info("DECODED --> " + decoded);
+    } else {
+      if (projectDTO.getId() != null)
+        return new Project(projectDTO.getId(), projectDTO.getName());
     }
+
     return new Project(projectDTO.getName(), decoded);
   }
 
