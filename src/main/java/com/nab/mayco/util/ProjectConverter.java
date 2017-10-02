@@ -23,7 +23,7 @@ public class ProjectConverter {
       logger.info("ENCODED --> " + encoded);
       image = new String(encoded);
     }
-    return new ProjectDTO(project.getId(), project.getName(), image);
+    return new ProjectDTO(project.getId(), project.getName(), project.getDescription(), image);
   }
 
   public static Project convertFromDTO(ProjectDTO projectDTO) {
@@ -34,10 +34,10 @@ public class ProjectConverter {
       logger.info("DECODED --> " + decoded);
     } else {
       if (projectDTO.getId() != null)
-        return new Project(projectDTO.getId(), projectDTO.getName());
+        return new Project(projectDTO.getId(), projectDTO.getName(), projectDTO.getDescription());
     }
 
-    return new Project(projectDTO.getName(), decoded);
+    return new Project(projectDTO.getName(), projectDTO.getDescription(), decoded);
   }
 
 }

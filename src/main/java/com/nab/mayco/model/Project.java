@@ -20,26 +20,33 @@ public class Project implements Serializable {
   @Column(name = "project_id")
   private Integer id;
 
+  // Podriamos poner validaciones como NOT_NULL, etc
   @Column(name = "name")
   private String name;
+
+  @Column(name = "description")
+  private String description;
 
   @Column(name = "image")
   private byte[] image;
 
   public Project() {}
 
-  public Project(Integer id, String name) {
+  public Project(Integer id, String name, String description) {
     this.name = name;
     this.id = id;
+    this.description = description;
   }
 
-  public Project(String name) {
+  public Project(String name, String description) {
     this.name = name;
+    this.description = description;
   }
 
-  public Project(String name, byte[] image) {
+  public Project(String name, String description, byte[] image) {
     this.name = name;
     this.image = image;
+    this.description = description;
   }
 
 
@@ -49,6 +56,10 @@ public class Project implements Serializable {
 
   public String getName() {
     return name;
+  }
+
+  public String getDescription() {
+    return description;
   }
 
   public byte[] getImage() {
@@ -61,6 +72,10 @@ public class Project implements Serializable {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public void setImage(byte[] image) {
