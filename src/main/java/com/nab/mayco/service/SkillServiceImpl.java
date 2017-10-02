@@ -6,12 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nab.mayco.dto.SkillDTO;
 import com.nab.mayco.model.Skill;
 import com.nab.mayco.repository.SkillRepository;
 import com.nab.mayco.util.SkillConverter;
 
+@Transactional
 @Service("SkillService")
 public class SkillServiceImpl implements SkillService {
 

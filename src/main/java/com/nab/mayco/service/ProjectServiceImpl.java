@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nab.mayco.dto.ProjectDTO;
 import com.nab.mayco.model.Project;
 import com.nab.mayco.repository.ProjectRepository;
 import com.nab.mayco.util.ProjectConverter;
 
-// @Transactional
-
+@Transactional
 @Service("ProjectService")
 public class ProjectServiceImpl implements ProjectService {
 
