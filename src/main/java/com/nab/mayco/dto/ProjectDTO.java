@@ -10,6 +10,8 @@ public class ProjectDTO implements Serializable {
 
   private String name;
 
+  private String description;
+
   private Byte[] imageDecoded;
 
   private String imageEncoded;
@@ -21,24 +23,28 @@ public class ProjectDTO implements Serializable {
     this.id = id;
   }
 
-  public ProjectDTO(Integer id, String name) {
+  public ProjectDTO(Integer id, String name, String description) {
     this.name = name;
     this.id = id;
+    this.description = description;
   }
 
-  public ProjectDTO(String name) {
+  public ProjectDTO(String name, String description) {
     this.name = name;
+    this.description = description;
   }
 
-  public ProjectDTO(String name, Byte[] imageDecoded) {
+  public ProjectDTO(String name, String description, Byte[] imageDecoded) {
     this.name = name;
+    this.description = description;
     this.imageDecoded = imageDecoded;
   }
 
 
-  public ProjectDTO(Integer id, String name, String imageEncoded) {
+  public ProjectDTO(Integer id, String name, String description, String imageEncoded) {
     this.id = id;
     this.name = name;
+    this.description = description;
     this.imageEncoded = imageEncoded;
   }
 
@@ -48,6 +54,10 @@ public class ProjectDTO implements Serializable {
 
   public String getName() {
     return name;
+  }
+
+  public String getDescription() {
+    return description;
   }
 
   public Byte[] getImageDecoded() {
