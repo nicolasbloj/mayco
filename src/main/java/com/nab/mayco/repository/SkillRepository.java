@@ -1,15 +1,8 @@
 package com.nab.mayco.repository;
 
-import java.util.List;
-
 import com.nab.mayco.model.Skill;
 
-public interface SkillRepository {
+public interface SkillRepository extends Repository<Integer, Skill> {
 
-  public Skill delete(Skill skill);
-
-  public void add(Skill skill);
-
-  public List<Skill> list();
 
 }
