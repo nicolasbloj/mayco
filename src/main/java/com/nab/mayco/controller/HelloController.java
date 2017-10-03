@@ -9,7 +9,7 @@ public class HelloController {
 
   @RequestMapping("/")
   public String hello() {
-    return "Hello World ... heroku ...";
+    return "Hello World ... heroku ...delete method";
   }
 
   @RequestMapping("/bye")

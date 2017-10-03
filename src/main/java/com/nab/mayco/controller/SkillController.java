@@ -16,57 +16,54 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nab.mayco.dto.ProjectDTO;
-import com.nab.mayco.service.ProjectService;
+import com.nab.mayco.dto.SkillDTO;
+import com.nab.mayco.service.SkillService;
 
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/skill")
 @CrossOrigin
-public class ProjectController {
+public class SkillController {
 
   @Autowired
-  @Qualifier("ProjectService")
-  ProjectService service;
+  @Qualifier("SkillService")
+  SkillService service;
 
   @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<List<ProjectDTO>> list() {
-    List<ProjectDTO> projects = service.list();
-    return new ResponseEntity<List<ProjectDTO>>(projects, HttpStatus.OK);
+  public ResponseEntity<List<SkillDTO>> list() {
+    List<SkillDTO> skills = service.list();
+    return new ResponseEntity<List<SkillDTO>>(skills, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json",
       produces = "application/json")
-  public ResponseEntity<String> add(
-      @RequestBody ProjectDTO projectDTO/* , UriComponentsBuilder builder */) {
-    service.add(projectDTO); // control flag si existe ya, HttpStatus.CONFLICT
-    // headers.setLocation(builder.path("/project/{id}").buildAndExpand(article.getProjectId()).toUri());
-    return new ResponseEntity<String>("Proyecto cargado correctamente", HttpStatus.CREATED);
+  public ResponseEntity<String> add(@RequestBody SkillDTO skillDTO) {
+    service.add(skillDTO); // control flag si existe ya, HttpStatus.CONFLICT
+    return new ResponseEntity<String>("Servicio cargado correctamente", HttpStatus.CREATED);
   }
 
-  // recibimos solo id, TODAVIA NO PROBADO
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE,
       consumes = "application/json", produces = "application/json")
   public ResponseEntity<Map<String, Integer>> delete(
-      @RequestBody(required = true) @PathVariable("id") int projectId) {
+      @RequestBody(required = true) @PathVariable("id") int skillId) {
 
     HttpStatus httpStatus = HttpStatus.OK;
-    String msg = "El proyecto eliminado correctamente.";
+    String msg = "El servicio fue eliminado correctamente.";
     Map<String, Integer> map = new HashMap<String, Integer>();
     Integer id = -1;
 
     try {
-      ProjectDTO projectDTO = new ProjectDTO(projectId);
-      id = service.delete(projectDTO);
+      SkillDTO skillDTO = new SkillDTO(skillId);
+      id = service.delete(skillDTO);
 
       if (id == -1) {
-        msg = (new StringBuilder(50).append("No se pudo eliminar el proyecto ")
-            .append(projectDTO.getId()).toString());
+        msg = (new StringBuilder(50).append("No se pudo eliminar el servicio ")
+            .append(skillDTO.getId()).toString());
         httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
       }
 
     } catch (Exception e) {
-      msg = "El proyecto no fue eliminado.";
+      msg = "El servicio no fue eliminado.";
       httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
     }
 
@@ -74,5 +71,6 @@ public class ProjectController {
     return new ResponseEntity<>(map, httpStatus);
 
   }
+
 
 }
