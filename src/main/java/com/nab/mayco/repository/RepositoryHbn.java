@@ -38,6 +38,10 @@ public abstract class RepositoryHbn<PK extends Serializable, E> implements Repos
     return e;
   }
 
+  public EntityManager getEntityManager() {
+    return entityManager;
+  }
+
 
 
 }

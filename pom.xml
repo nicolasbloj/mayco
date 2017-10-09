@@ -58,6 +58,21 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		
+		
+		<!-- SI USO ESTA DEPENDENCIA ME PIDE USUARIO Y PASSWORD 
+			AL LLAMAR AL ENDPOINT -->
+		<!--dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>
+			spring-boot-starter-security
+		</artifactId>
+		</dependency-->
+
 	</dependencies>
 
 	<build>
