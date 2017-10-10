@@ -1,7 +1,5 @@
 package com.nab.mayco.controller;
 
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +17,7 @@ import com.nab.mayco.service.UserService;
 @CrossOrigin
 public class UserController {
 
-  private Logger logger = Logger.getAnonymousLogger();
+  // private Logger logger = Logger.getAnonymousLogger();
 
   @Autowired
   UserService service;
