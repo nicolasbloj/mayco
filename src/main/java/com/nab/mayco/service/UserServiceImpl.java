@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public void add(UserDTO userDTO) {
     User user = UserConverter.convertFromDTO(userDTO);
-    user.setPassword(passwordEncoder.encode(user.getPassword()));
+    // user.setPassword(passwordEncoder.encode(user.getPassword()));
     this.userRepository.add(user);
 
   }
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     UserDTO userDTO = UserConverter.convertToDTO(userByUsername);
 
     if (userDTO != null) {
-      if (userDTOLoggin.getPassword().equals(passwordEncoder.encode(userDTO.getPassword()))) {
+      if (userDTOLoggin.getPassword().equals(userDTO.getPassword())) {
         return userDTO;
       }
     }
