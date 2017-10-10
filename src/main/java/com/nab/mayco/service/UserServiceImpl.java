@@ -27,6 +27,9 @@ public class UserServiceImpl implements UserService {
   @Autowired
   private PasswordEncoder passwordEncoder;
 
+  @Autowired
+  AuthService authService;
+
   @Override
   public List<UserDTO> list() {
     List<UserDTO> usersDTO = new ArrayList<UserDTO>();
@@ -41,7 +44,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public void add(UserDTO userDTO) {
     User user = UserConverter.convertFromDTO(userDTO);
-    // user.setPassword(passwordEncoder.encode(user.getPassword()));
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
     this.userRepository.add(user);
 
   }
@@ -58,15 +61,12 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public UserDTO login(UserDTO userDTOLoggin) {
-    User userByUsername = this.userRepository.getUserByUserName(userDTOLoggin.getUsername());
+  public UserDTO login(UserDTO userDTOFromLoggin) {
+    User userFromDB = this.userRepository.getUserByUserName(userDTOFromLoggin.getUsername());
+    UserDTO userDTOFromDB = UserConverter.convertToDTO(userFromDB);
 
-    UserDTO userDTO = UserConverter.convertToDTO(userByUsername);
-
-    if (userDTO != null) {
-      if (userDTOLoggin.getPassword().equals(userDTO.getPassword())) {
-        return userDTO;
-      }
+    if (this.authService.auth(userDTOFromLoggin, userDTOFromDB)) {
+      return userDTOFromDB;
     }
 
     return null;

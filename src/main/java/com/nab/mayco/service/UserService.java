@@ -12,6 +12,6 @@ public interface UserService {
 
   public Integer delete(UserDTO userDTO);
 
-  public UserDTO login(UserDTO userDTOLogging);
+  public UserDTO login(UserDTO userDTOLoggin);
 
 }
