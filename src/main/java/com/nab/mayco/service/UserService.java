@@ -8,7 +8,7 @@ public interface UserService {
 
   public List<UserDTO> list();
 
-  public void add(UserDTO userDTO);
+  public Integer add(UserDTO userDTO);
 
   public Integer delete(UserDTO userDTO);
 

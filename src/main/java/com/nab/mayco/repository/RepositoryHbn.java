@@ -26,8 +26,10 @@ public abstract class RepositoryHbn<PK extends Serializable, E> implements Repos
   }
 
   @Override
-  public void add(E e) {
+  public E add(E e) {
     entityManager.persist(e);
+    entityManager.flush();
+    return e;
   }
 
   @Override

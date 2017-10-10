@@ -42,10 +42,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void add(UserDTO userDTO) {
+  public Integer add(UserDTO userDTO) {
     User user = UserConverter.convertFromDTO(userDTO);
     user.setPassword(passwordEncoder.encode(user.getPassword()));
-    this.userRepository.add(user);
+    User userAdded = this.userRepository.add(user);
+    return userAdded.getId();
 
   }
 
@@ -66,6 +67,7 @@ public class UserServiceImpl implements UserService {
     UserDTO userDTOFromDB = UserConverter.convertToDTO(userFromDB);
 
     if (this.authService.auth(userDTOFromLoggin, userDTOFromDB)) {
+      userDTOFromDB.setPassword(null);
       return userDTOFromDB;
     }
 
