@@ -30,22 +30,29 @@ public class UserController {
 
   @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json",
       produces = "application/json")
-  public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTOLogging) {
+  public ResponseEntity<Map<String, UserDTO>> login(@RequestBody UserDTO userDTOLogging) {
 
     UserDTO userDTO = service.login(userDTOLogging);
 
-    if (userDTO != null)
-      return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
-    else
-      return new ResponseEntity<UserDTO>(userDTO, HttpStatus.NO_CONTENT);
+    Map<String, UserDTO> map = new HashMap<String, UserDTO>();
+    HttpStatus httpStatus = HttpStatus.OK;
+    String msg = "Usuario logeado correctamente";
 
+    if (userDTO == null) {
+      httpStatus = HttpStatus.OK;
+      msg = "Usuario o contraseña incorrecto";
+    }
+
+    map.put(msg, userDTO);
+
+    return new ResponseEntity<>(map, httpStatus);
   }
 
   @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json",
       produces = "application/json")
   public ResponseEntity<Map<String, Integer>> add(@RequestBody UserDTO userDTO) {
     Map<String, Integer> map = new HashMap<String, Integer>();
-    Integer id = service.add(userDTO);;
+    Integer id = service.add(userDTO);
     map.put("Usuario cargado correctamente...", id);
     return new ResponseEntity<>(map, HttpStatus.CREATED);
   }
@@ -89,5 +96,17 @@ public class UserController {
   }
 
 
+
+  @RequestMapping(value = "/adduseradmin", method = RequestMethod.GET,
+      produces = "application/json")
+  @ResponseStatus(value = HttpStatus.OK)
+  public String adduseradmin() {
+    Integer id = service.add(new UserDTO("admin", "admin", "admin@123456"));
+    if (id > 0) {
+      return "added";
+    }
+    return "added fail";
+
+  }
 
 }
