@@ -7,7 +7,7 @@ public interface Repository<PK extends Serializable, E> {
 
   public List<E> list();
 
-  public void add(E e);
+  public E add(E e);
 
   public E delete(E e);
 

@@ -1,0 +1,10 @@
+*UPDATE DB -> HEROKU
+*Mejorar nombre de endpoints. Modificar en cliente tambien
+*Add en services deberia devolver id de entidad como lo hace UserService. Modificar en cliente tambien.
+*Controlar nombres de variables.
+*Logger
+*Refactor gral.
+*OCULTAR CONTRASEÑA CORREO
+*TESTING.
+
+	
