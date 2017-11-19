@@ -11,7 +11,7 @@ public class HelloController {
 
   @RequestMapping("/")
   public String hello() {
-    return "Hello World ... heroku ...delete method";
+    return "Hello World ... nicolas";
   }
 
   @RequestMapping("/bye")
